@@ -43,8 +43,8 @@ def populate_people_table():
     """Populates the people table with 200 fake people"""
     # TODO: Create function body
     fake = Faker()
-    conn = sqlite3.connect(db_path)
-    cur = conn.cursor()
+    con = sqlite3.connect(db_path)
+    cur = con.cursor()
 
     for i in range(200):
         name = fake.name()
@@ -61,8 +61,8 @@ def populate_people_table():
                                 VALUES (?, ?, ?, ?);
         ''', (name, age, created_at, updated_at))
 
-    conn.commit()
-    conn.close()
+    con.commit()
+    con.close()
     return
 
 def get_script_dir():
